@@ -4,14 +4,28 @@ class SphereItem {
  float radius;
  float theta;
  float phi;
+ 
+ //Speed properties
+ float thetaSpeed = 0;
+ float phiSpeed = 0;
+ //Size
+ float itemSize = 5;
   
- public void SphereItem() {
+ public void SphereItem() 
+ {
+ 
  };
 
  public void init() {
+ itemSize = random(5);
+ thetaSpeed = random(-0.01, 0.01);
+ phiSpeed = random(-0.01, 0.01);
  };
 
- public void update() {
+ public void update() 
+ {
+   theta += thetaSpeed;
+   phi += phiSpeed;
  };
 
  public void render() {
@@ -31,7 +45,7 @@ class SphereItem {
  fill(0,0,0,150);
  noStroke();
  //Draw a circle
- ellipse(0,0,5,5);
+ ellipse(0,0,itemSize,itemSize);
  //Go back to our position in 3d space
  popMatrix();
    

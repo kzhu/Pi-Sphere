@@ -24,6 +24,8 @@ class Sphere {
    
    items.add(items.size(),si);
    si.init();
+   
+   println("addsphere");
  }
 
  public void update() 
