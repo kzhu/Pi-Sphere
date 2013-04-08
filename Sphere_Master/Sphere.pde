@@ -8,10 +8,10 @@ class Sphere {
    ArrayList items = new ArrayList();
   
  public void Sphere() {
-   
  };
 
  public void init() {
+   
  };
  
  public void addSphereItem()
