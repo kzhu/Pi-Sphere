@@ -11,7 +11,7 @@ class SphereItem {
  //Size
  float itemSize = 5;
  
- String piDigits = "314159265358";
+ //String piDigits = "314159265358";
  int piCounter = 0;
  
  public void SphereItem() 
@@ -32,14 +32,16 @@ class SphereItem {
    //println(piDigits.charAt(piCounter) - '0');
    //itemSize = piDigits.charAt(piCounter) - '0';   
    //println(Float.parseFloat(piDigits.charAt(piCounter)));
-   char x = piDigits.charAt(piCounter);
+   //char piSize = piDigits.charAt(piCounter);
   // println(x);
    //String y = Character.toString(x);
    //println(y);
    
-   println(float(x));
-   itemSize = float(x)/3;
-   piCounter= (piCounter + 1) % (piDigits.length() - 1);
+   String lines[] = loadStrings("pinumbers.txt");
+   
+   //println(float(piSize));
+   itemSize = float(lines[piCounter])/3; // Set Item size as a x
+   piCounter= (piCounter + 1) % (lines.length - 1);
    
  };
 
