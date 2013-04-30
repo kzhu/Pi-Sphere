@@ -7,20 +7,22 @@ String[] lines;
 //float rotation = PI;
 float ang = 0, ang2 = 0, ang3 = 0, ang4 = 0;
 float px = 0, py = 0, pz = 0;
+int renderCounter = 0;
 
 void setup() 
 {
-  size(500,500,OPENGL);
+  size(800,800,OPENGL);
   mySphere = new Sphere();
   mySphere.init();
-  //frameRate(50);
+  frameRate(1000);
   noStroke();
+  mySphere.addSphereItem();
 }
 
 void draw()
 {
   //background(111);
-  println("in Camera");
+  //println("in Camera");
  // beginCamera();
 // camera();
   /*
@@ -41,20 +43,23 @@ void draw()
    ang3 += 2.0;
   // ang4 += 0.75;
   
-  camera (px, py, pz,
-  250, 250, 250,
-  0, 1, 0);  
+//  camera (px, py, pz, 250, 250, 250,  0, 1, 0);  
   
-  mySphere.update();
-  mySphere.render();
-  
+  if (renderCounter < 400)
+  {
+    mySphere.update();
+    mySphere.render();
+    renderCounter++;
+    //println(renderCounter);
+  }
  // endCamera();
 
 }
-
+/*
 void mousePressed() {
  mySphere.addSphereItem();
 };
+*/
 // Calculate PI with arbitrary precision
 // ( source: http://java.sun.com/docs/books/tutorial/rmi/client.html )
 
@@ -104,10 +109,10 @@ BigDecimal atan(int invx, int s) {
 */
 class Sphere {
 
-   float xPos = 250;
-   float yPos = 250;
-   float zPos = 250;
-   float radius = 50;
+   float xPos = 400;
+   float yPos = 400;
+   float zPos = 400;
+   float radius = 100;
    
    ArrayList items = new ArrayList();
   
@@ -159,17 +164,18 @@ class SphereItem {
 
  Sphere parentSphere;
  float radius;
- float theta;
- float phi;
+ float theta = 0;
+ float phi=0;
  
  //Speed properties
  float thetaSpeed = 0;
  float phiSpeed = 0;
  //Size
- float itemSize = 5;
+ float itemSize;
  
  //String piDigits = "314159265358";
  int piCounter = 0;
+ int phiCounter = 0;
  
  public void SphereItem() 
  {
@@ -177,15 +183,22 @@ class SphereItem {
  };
 
  public void init() {
- itemSize = random(5);
- thetaSpeed = 0.05;
- phiSpeed = 0.06;
+ //itemSize = random(5);
+ thetaSpeed = PI/10;
+ phiSpeed = PI/10;
  };
 
  public void update() 
  {
-   theta += thetaSpeed;
-   phi += phiSpeed;
+  
+   if (phiCounter == 20)
+   {
+    phi += phiSpeed;
+    phiCounter = 0;
+   }
+    theta += thetaSpeed;
+     phiCounter++;
+   
    //println(piDigits.charAt(piCounter) - '0');
    //itemSize = piDigits.charAt(piCounter) - '0';   
    //println(Float.parseFloat(piDigits.charAt(piCounter)));
@@ -226,6 +239,7 @@ class SphereItem {
  };
  
 };
+
 // atan function
 /*
 public BigDecimal atan(int invx, int s) 

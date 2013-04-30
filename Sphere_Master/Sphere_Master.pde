@@ -7,20 +7,22 @@ String[] lines;
 //float rotation = PI;
 float ang = 0, ang2 = 0, ang3 = 0, ang4 = 0;
 float px = 0, py = 0, pz = 0;
+int renderCounter = 0;
 
 void setup() 
 {
-  size(500,500,OPENGL);
+  size(800,800,OPENGL);
   mySphere = new Sphere();
   mySphere.init();
-  //frameRate(50);
+  frameRate(1000);
   noStroke();
+  mySphere.addSphereItem();
 }
 
 void draw()
 {
   //background(111);
-  println("in Camera");
+  //println("in Camera");
  // beginCamera();
 // camera();
   /*
@@ -41,17 +43,20 @@ void draw()
    ang3 += 2.0;
   // ang4 += 0.75;
   
-  camera (px, py, pz,
-  250, 250, 250,
-  0, 1, 0);  
+//  camera (px, py, pz, 250, 250, 250,  0, 1, 0);  
   
-  mySphere.update();
-  mySphere.render();
-  
+  if (renderCounter < 400)
+  {
+    mySphere.update();
+    mySphere.render();
+    renderCounter++;
+    //println(renderCounter);
+  }
  // endCamera();
 
 }
-
+/*
 void mousePressed() {
  mySphere.addSphereItem();
 };
+*/

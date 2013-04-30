@@ -1,9 +1,9 @@
 class Sphere {
 
-   float xPos = 250;
-   float yPos = 250;
-   float zPos = 250;
-   float radius = 50;
+   float xPos = 400;
+   float yPos = 400;
+   float zPos = 400;
+   float radius = 100;
    
    ArrayList items = new ArrayList();
   

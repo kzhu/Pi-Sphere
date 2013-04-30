@@ -2,17 +2,18 @@ class SphereItem {
 
  Sphere parentSphere;
  float radius;
- float theta;
- float phi;
+ float theta = 0;
+ float phi=0;
  
  //Speed properties
  float thetaSpeed = 0;
  float phiSpeed = 0;
  //Size
- float itemSize = 5;
+ float itemSize;
  
  //String piDigits = "314159265358";
  int piCounter = 0;
+ int phiCounter = 0;
  
  public void SphereItem() 
  {
@@ -20,15 +21,22 @@ class SphereItem {
  };
 
  public void init() {
- itemSize = random(5);
- thetaSpeed = 0.05;
- phiSpeed = 0.06;
+ //itemSize = random(5);
+ thetaSpeed = PI/10;
+ phiSpeed = PI/10;
  };
 
  public void update() 
  {
-   theta += thetaSpeed;
-   phi += phiSpeed;
+  
+   if (phiCounter == 20)
+   {
+    phi += phiSpeed;
+    phiCounter = 0;
+   }
+    theta += thetaSpeed;
+     phiCounter++;
+   
    //println(piDigits.charAt(piCounter) - '0');
    //itemSize = piDigits.charAt(piCounter) - '0';   
    //println(Float.parseFloat(piDigits.charAt(piCounter)));
@@ -69,3 +77,4 @@ class SphereItem {
  };
  
 };
+
