@@ -128,8 +128,8 @@ class Sphere {
    SphereItem si = new SphereItem();
    si.parentSphere = this;
    
-   si.theta= random(PI*2);
-   si.phi= random(PI*2);
+   // si.theta= random(PI*2);
+   // si.phi= random(PI*2);
    
    items.add(items.size(),si);
    si.init();
